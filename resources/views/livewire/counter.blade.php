@@ -4,4 +4,8 @@
     <button wire:click="increment">+</button>
  
     <button wire:click="decrement">-</button>
+
+    <div>
+        <livewire:create-post />
+    </div>
 </div>
