@@ -1,5 +1,4 @@
-<div>
-  
+<div class="m-4">
     @if (session()->has('message'))
         <div class="alert alert-success">
             {{ session('message') }}
@@ -7,9 +6,9 @@
     @endif
   
     @if($updateMode)
-        @include('livewire.update')
+        @include('livewire.update-post')
     @else
-        @include('livewire.create')
+        @include('livewire.create-post')
     @endif
   
     <table class="table table-bordered mt-5">
@@ -24,12 +23,12 @@
         <tbody>
             @foreach($posts as $post)
             <tr>
-                <td>{{ $post->id }}</td>
-                <td>{{ $post->title }}</td>
-                <td>{{ $post->body }}</td>
+                <td>{{ $post['id'] ?? '' }}</td>
+                <td>{{ $post['title'] ?? '' }}</td>
+                <td>{{ $post['body'] ?? '' }}</td>
                 <td>
-                <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>
-                    <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>
+                <button wire:click="edit({{ $post['id'] }})" class="btn btn-primary btn-sm">Edit</button>
+                    <button wire:click="delete({{ $post['id'] }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>
             @endforeach

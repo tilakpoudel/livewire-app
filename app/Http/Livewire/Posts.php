@@ -2,13 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Posts extends Component
 {
-    public $posts = [];
-    public $title, $body;
+    public $posts = [
+        [
+            'id' => 1,
+            'title' => 'title',
+            'body' => 'body ',
+        ]
+    ];
+    public $title, $body, $postId;
     public $updateMode = false;
    
     public function render()
@@ -38,9 +45,9 @@ class Posts extends Component
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        $this->post_id = $id;
         $this->title = $post->title;
         $this->body = $post->body;
+        $this->postId = $id;
   
         $this->updateMode = true;
     }
@@ -58,7 +65,7 @@ class Posts extends Component
             'body' => 'required',
         ]);
   
-        $post = Post::find($this->post_id);
+        $post = Post::find($this->postId);
         $post->update([
             'title' => $this->title,
             'body' => $this->body,
