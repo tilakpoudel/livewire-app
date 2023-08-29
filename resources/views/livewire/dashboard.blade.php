@@ -1,6 +1,3 @@
 <div>
-    <nav>
-        <a href="/" wire:navigate>Dashboard</a>
-        <a href="/posts" wire:navigate>Posts</a>
-    </nav>
+    <h1> Hi there! Welcome to dashboard. </h1>
 </div>
