@@ -1,43 +1,38 @@
 <div>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-    <h1>Title: "{{ $title }}"</h1>
-    <h2>Author: {{ $author }}</h2>
-
-    <div>
-        <form>
-            <label for="title">Title:</label>
-         
-            <input type="text" id="title" wire:model="title"> 
-        </form>
-    </div>
-
-    <h2>List of Posts: </h2>
-    <div>
-        <table class="table table-border">
-            <thead>
-                <th>SN</th>
+  
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+  
+    @if($updateMode)
+        @include('livewire.update')
+    @else
+        @include('livewire.create')
+    @endif
+  
+    <table class="table table-bordered mt-5">
+        <thead>
+            <tr>
+                <th>No.</th>
                 <th>Title</th>
-                <th>Action</th>
-            </thead>
-
-            <tbody>
-                @foreach ($posts as $post)
-                    <tr wire:key="{{ $post->id }}"> 
-                        <td>{{ $post->id ?? '' }}</td>
-                        <td>{{ $post->title ?? ''  }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        @foreach ($posts as $post)
-            <div wire:key="{{ $post->id }}"> 
-                
-            </div>
-        @endforeach
-    </div>
+                <th>Body</th>
+                <th width="150px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($posts as $post)
+            <tr>
+                <td>{{ $post->id }}</td>
+                <td>{{ $post->title }}</td>
+                <td>{{ $post->body }}</td>
+                <td>
+                <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>
+                    <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
