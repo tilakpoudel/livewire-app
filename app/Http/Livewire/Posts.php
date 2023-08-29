@@ -5,14 +5,14 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class CreatePost extends Component
+class Posts extends Component
 {
     public $title = 'Post title...';
     public $posts = [];
 
     public function render()
     {
-        return view('livewire.create-post')->with([
+        return view('livewire.posts')->with([
             'author' => Auth::user()?->name,
         ]);
     }

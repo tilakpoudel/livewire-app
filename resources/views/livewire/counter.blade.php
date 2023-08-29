@@ -6,6 +6,9 @@
     <button wire:click="decrement">-</button>
 
     <div>
-        <livewire:create-post />
+
     </div>
+    {{-- <div>
+        <livewire:posts />
+    </div> --}}
 </div>
