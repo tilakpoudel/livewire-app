@@ -20,5 +20,5 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
-Route::get('/counter', Counter::class);
+Route::get('/counter', Counter::class)->name('counter');
 Route::get('/posts', Counter::class)->name('posts');
