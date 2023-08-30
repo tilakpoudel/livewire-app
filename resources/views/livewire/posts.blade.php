@@ -23,13 +23,13 @@
         </thead>
         <tbody>
             @foreach($posts as $post)
-            <tr>
-                <td>{{ $post['id'] ?? '' }}</td>
-                <td>{{ $post['title'] ?? '' }}</td>
-                <td>{{ $post['body'] ?? '' }}</td>
+            <tr wire:key="{{ $post->id }}">
+                <td>{{ $post->id ?? '' }}</td>
+                <td>{{ $post->title ?? '' }}</td>
+                <td>{{ $post->body ?? '' }}</td>
                 <td>
-                <button wire:click="edit({{ $post['id'] }})" class="btn btn-primary btn-sm">Edit</button>
-                    <button wire:click="delete({{ $post['id'] }})" class="btn btn-danger btn-sm">Delete</button>
+                <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>
+                    <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>
             @endforeach
