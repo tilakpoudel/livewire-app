@@ -8,13 +8,13 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a>
+					<a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}" wire:navigate>Dashboard</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('counter') }}">Counter</a>
+					<a class="nav-link" href="{{ route('counter') }}" wire:navigate>Counter</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('posts') }}">Posts</a>
+					<a class="nav-link" href="{{ route('posts') }}" wire:navigate>Posts</a>
 				</li>
 				</ul>
 			</div>

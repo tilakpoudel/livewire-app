@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Posts extends Component
@@ -11,9 +12,11 @@ class Posts extends Component
     public $title, $body, $postId;
     public $updateMode = false;
    
+    #[Title('Posts')] 
     public function render()
     {
         $this->posts = Post::all();
+
         return view('livewire.posts');
     }
   

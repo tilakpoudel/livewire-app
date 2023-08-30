@@ -35,4 +35,6 @@
             @endforeach
         </tbody>
     </table>
+
+    <livewire:counter :count=1 />
 </div>

@@ -6,7 +6,12 @@ use Livewire\Component;
 
 class Counter extends Component
 {
-    public $count = 1;
+    public $count;
+
+    public function mount($count = 0)
+    {
+        $this->count = $count;
+    }
  
     public function increment()
     {
