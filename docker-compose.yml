@@ -1,0 +1,26 @@
+  version: "3.7"
+
+  networks:
+    local_default:
+      name: local_default
+      driver: bridge
+      external: true
+
+  services:
+    db:
+      container_name: livewire-app-db
+      environment:
+        MYSQL_DATABASE: ${DB_DATABASE}
+        MYSQL_PASSWORD: ${DB_PASSWORD}
+        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        MYSQL_USER: ${DB_USERNAME}
+      image: mariadb:10.5
+      networks:
+        - local_default
+      ports:
+        - 20023:3306
+      volumes:
+      - db_data:/var/lib/mysql
+
+  volumes:
+    db_data:
