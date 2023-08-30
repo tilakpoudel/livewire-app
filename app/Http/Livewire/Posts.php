@@ -3,23 +3,17 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Posts extends Component
 {
-    public $posts = [
-        [
-            'id' => 1,
-            'title' => 'title',
-            'body' => 'body ',
-        ]
-    ];
+    public $posts;
     public $title, $body, $postId;
     public $updateMode = false;
    
     public function render()
     {
+        $this->posts = Post::all();
         return view('livewire.posts');
     }
   
@@ -37,7 +31,7 @@ class Posts extends Component
   
         Post::create($validatedDate);
   
-        session()->flash('message', 'Post Created Successfully.');
+        session()->flash('message', 'Post created successfully.');
   
         $this->resetInputFields();
     }
@@ -73,13 +67,13 @@ class Posts extends Component
   
         $this->updateMode = false;
   
-        session()->flash('message', 'Post Updated Successfully.');
+        session()->flash('message', 'Post updated successfully.');
         $this->resetInputFields();
     }
    
     public function delete($id)
     {
         Post::find($id)->delete();
-        session()->flash('message', 'Post Deleted Successfully.');
+        session()->flash('message', 'Post deleted successfully.');
     }
 }
