@@ -10,6 +10,7 @@ class Counter extends Component
 
     public function mount($count = 0)
     {
+        sleep(2);
         $this->count = $count;
     }
  

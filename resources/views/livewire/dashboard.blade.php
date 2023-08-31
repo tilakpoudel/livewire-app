@@ -1,3 +1,3 @@
 <div>
-    <h1> Hi there! Welcome to dashboard. </h1>
+    <h1> Hi there! Welcome to Liveware dashboard. </h1>
 </div>
