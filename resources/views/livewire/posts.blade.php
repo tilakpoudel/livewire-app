@@ -36,5 +36,5 @@
         </tbody>
     </table>
 
-    <livewire:counter :count=1 />
+    <livewire:counter :count=1 lazy/>
 </div>
