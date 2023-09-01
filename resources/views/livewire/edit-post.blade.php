@@ -1,4 +1,4 @@
-<form>
+<form wire:submit="update">
     <input type="hidden" wire:model="post_id">
     <div class="form-group">
         <label for="exampleFormControlInput1">Title:</label>
@@ -13,7 +13,9 @@
     </div>
 
     <div>
-        <button wire:click.prevent="update()" class="btn btn-success mt-2">Update</button>
-        <button wire:click.prevent="cancel()" class="btn btn-danger mt-2">Cancel</button>
+        <button class="btn btn-success mt-2">Update</button>
+        <button wire:click.prevent="cancel" class="btn btn-danger mt-2">Cancel</button>
+        <span wire:loading wire:target="update">Updating..</span>
+        <span wire:loading wire:target="cancel">Clearing..</span>
     </div>
 </form>

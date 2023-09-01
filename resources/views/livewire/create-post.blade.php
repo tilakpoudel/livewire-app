@@ -12,4 +12,5 @@
     </div>
 
     <button class="btn btn-success btn-md mt-2">Save</button>
+    {{-- <span wire:loading>Saving...</span>  --}}
 </form>

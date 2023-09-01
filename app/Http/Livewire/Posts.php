@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Posts extends Component
 {
-    public $posts;
+    public $posts = [];
     public $title, $body, $postId;
     public $updateMode = false;
    
@@ -21,8 +21,9 @@ class Posts extends Component
     }
   
     private function resetInputFields(){
-        $this->title = '';
-        $this->body = '';
+        $this->reset(['title', 'body']); 
+        // $this->title = '';
+        // $this->body = '';
     }
 
     public function store()
@@ -31,7 +32,8 @@ class Posts extends Component
             'title' => 'required',
             'body' => 'required',
         ]);
-  
+        
+        // sleep(1);
         Post::create($validatedDate);
   
         session()->flash('message', 'Post created successfully.');
@@ -61,7 +63,8 @@ class Posts extends Component
             'title' => 'required',
             'body' => 'required',
         ]);
-  
+        
+        sleep(1);
         $post = Post::find($this->postId);
         $post->update([
             'title' => $this->title,
