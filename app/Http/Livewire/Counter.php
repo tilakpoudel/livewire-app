@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Attributes\Title;
+use Livewire\Attributes\On; 
 use Livewire\Component;
 
 class Counter extends Component
@@ -21,6 +22,12 @@ class Counter extends Component
     }
  
     public function increment()
+    {
+        $this->count++;
+    }
+
+    #[On('post-created')] 
+    public function incrementCount()
     {
         $this->count++;
     }

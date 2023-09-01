@@ -63,6 +63,10 @@ class Posts extends Component
         session()->flash('message', 'Post created successfully.');
   
         $this->resetInputFields();
+
+        // $this->dispatch('post-created'); // every component listening will be notified
+        $this->dispatch('post-created')->to(Counter::class); // notify only to counter component
+
     }
   
     public function update()
