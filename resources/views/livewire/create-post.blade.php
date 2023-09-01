@@ -1,7 +1,7 @@
 <form wire:submit="store()">
     <div class="form-group">
         <label for="exampleFormControlInput1">Title:</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" wire:model.live="title">
         @error('title') <span class="text-danger">{{ $message }}</span>@enderror
     </div>
 
@@ -11,6 +11,7 @@
         @error('body') <span class="text-danger">{{ $message }}</span>@enderror
     </div>
 
-    <button class="btn btn-success btn-md mt-2">Save</button>
-    {{-- <span wire:loading>Saving...</span>  --}}
+    <button class="btn btn-success btn-md mt-2">Save
+        <span wire:loading>...</span>
+    </button>
 </form>
