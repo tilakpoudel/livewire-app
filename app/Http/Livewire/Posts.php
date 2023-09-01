@@ -3,14 +3,21 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
+use Livewire\Attributes\Rule; 
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Posts extends Component
 {
-    public $posts;
-    public $title, $body, $postId;
+    public $posts = [];
+    public $postId;
     public $updateMode = false;
+
+    #[Rule('required | min:3')] 
+    public $title = '';
+ 
+    #[Rule('required | min:5')] 
+    public $body = '';
    
     #[Title('Posts')] 
     public function render()
@@ -21,18 +28,15 @@ class Posts extends Component
     }
   
     private function resetInputFields(){
-        $this->title = '';
-        $this->body = '';
+        $this->reset(['title', 'body']); 
     }
 
     public function store()
     {
-        $validatedDate = $this->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
-  
-        Post::create($validatedDate);
+        $validatedData = $this->validate();
+        
+        sleep(1);
+        Post::create($validatedData);
   
         session()->flash('message', 'Post created successfully.');
   
@@ -57,11 +61,9 @@ class Posts extends Component
   
     public function update()
     {
-        $validatedDate = $this->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
-  
+       $this->validate();
+        
+        sleep(1);
         $post = Post::find($this->postId);
         $post->update([
             'title' => $this->title,

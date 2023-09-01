@@ -12,13 +12,13 @@
         @include('livewire.create-post')
     @endif
   
-    <table class="table table-bordered mt-5">
+    <table class="table table-bordered table-responsive table-hover mt-5">
         <thead>
             <tr>
                 <th>No.</th>
                 <th>Title</th>
                 <th>Body</th>
-                <th width="150px">Action</th>
+                <th width="200px">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +27,9 @@
                 <td>{{ $post->id ?? '' }}</td>
                 <td>{{ $post->title ?? '' }}</td>
                 <td>{{ $post->body ?? '' }}</td>
-                <td>
-                <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>
+                <td class="">
+                    <a href="{{ route('view-post', $post) }}" wire:navigate class="btn btn-success btn-sm">View</a>
+                    <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>
                     <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>
