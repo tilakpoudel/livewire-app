@@ -29,17 +29,10 @@ class Posts extends Component
   
     private function resetInputFields(){
         $this->reset(['title', 'body']); 
-        // $this->title = '';
-        // $this->body = '';
     }
 
     public function store()
     {
-        // $validatedData = $this->validate([
-        //     'title' => 'required',
-        //     'body' => 'required',
-        // ]);
-
         $validatedData = $this->validate();
         
         sleep(1);
@@ -68,10 +61,7 @@ class Posts extends Component
   
     public function update()
     {
-        $validatedData = $this->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
+       $this->validate();
         
         sleep(1);
         $post = Post::find($this->postId);
