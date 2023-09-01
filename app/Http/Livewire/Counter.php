@@ -14,15 +14,15 @@ class Counter extends Component
         // sleep(2);
         $this->count = $count;
     }
+
+    public function decrement()
+    {
+        $this->count--;
+    }
  
     public function increment()
     {
         $this->count++;
-    }
- 
-    public function decrement()
-    {
-        $this->count--;
     }
 
     #[Title('Counter')] 

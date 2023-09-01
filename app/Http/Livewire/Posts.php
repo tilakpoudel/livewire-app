@@ -9,8 +9,8 @@ use Livewire\Component;
 
 class Posts extends Component
 {
-    public $posts = [];
     public $postId;
+    public $posts = [];
     public $updateMode = false;
 
     #[Rule('required | min:3')] 
@@ -26,7 +26,29 @@ class Posts extends Component
 
         return view('livewire.posts');
     }
+
+    public function cancel()
+    {
+        $this->updateMode = false;
+        $this->resetInputFields();
+    }
   
+    public function delete($id)
+    {
+        Post::find($id)->delete();
+        session()->flash('message', 'Post deleted successfully.');
+    }
+
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        $this->title = $post->title;
+        $this->body = $post->body;
+        $this->postId = $id;
+  
+        $this->updateMode = true;
+    }
+
     private function resetInputFields(){
         $this->reset(['title', 'body']); 
     }
@@ -43,26 +65,10 @@ class Posts extends Component
         $this->resetInputFields();
     }
   
-    public function edit($id)
-    {
-        $post = Post::findOrFail($id);
-        $this->title = $post->title;
-        $this->body = $post->body;
-        $this->postId = $id;
-  
-        $this->updateMode = true;
-    }
-  
-    public function cancel()
-    {
-        $this->updateMode = false;
-        $this->resetInputFields();
-    }
-  
     public function update()
     {
        $this->validate();
-        
+
         sleep(1);
         $post = Post::find($this->postId);
         $post->update([
@@ -74,11 +80,5 @@ class Posts extends Component
   
         session()->flash('message', 'Post updated successfully.');
         $this->resetInputFields();
-    }
-   
-    public function delete($id)
-    {
-        Post::find($id)->delete();
-        session()->flash('message', 'Post deleted successfully.');
     }
 }
